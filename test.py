@@ -26,6 +26,10 @@ def test_simple_sums():
     I = np.empty(tuple(n), dtype=np.float64)
     I = np.random.random(I.size).reshape(tuple(n))
     out_fast = np.zeros(tuple(n), dtype=np.float64)
+    start = time()
+    ptest.rectangle_sums_sequential(I, m, out_fast)
+    end = time()
+    print "Fast sequential. Elapsed: %f"%(end-start,)
     for nthreads in range(1, 5):
         start = time()
         ptest.rectangle_sums_parallel(I, m, out_fast, nthreads)
