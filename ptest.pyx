@@ -185,7 +185,8 @@ def rectangle_sums_parallel(double[:,:,:] I, int[:] m, double[:,:,:] out, int nu
                     # Use integral of current rectangle
                     if (s_start <= i) and (i < s_end):
                         out[i,j,k] = integral[0]
-        free_volume(T, 2, n1)                
+        free_volume(T, 2, n1)
+        free(integral)
                         
                        
 @cython.boundscheck(False)
